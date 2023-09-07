@@ -1,0 +1,134 @@
+Variables: Son elementos fundamentales para almacenar y manipular datos en un programa.
+    Es un contenedor que es un guardamemoria, un nombre, un tipo de dato y un valor que es un dato asignado.
+    El nombre es una etiqueta que se usa par aidentificarla y hace referencia a ella en el código.
+    El tipo de dato indica que tipo de información se almacena en esa variable.
+    El valor asignado es el dato que se almacena en esa variable.
+
+    Las variables se utilizan para guardar datos que pueden variar durante la ejecución del programa.
+
+    Cuando programamos podemos hacer varias acciones sobre las variables.
+    Declararlas: significa que se asigna nombre y tipo de dato a la variable.
+    Asignar valor a la variable luego de declararla (almacena dato específico en la variable)
+    Leer el valor de variable. Se puede acceder al valor de la variable y leerlo en el código.
+    Modificar los valores de una variable dependeiendo de las operaciones.
+
+    En JS las variables se declaran utilizando la palabra reservada "let" seguido del nombre de la variable.
+
+    Mutablidad: Capacidad de cambiar su estado o contenido después de su creación. Una variable puede cabiar su contenido o valor 
+    siempre y cuando sea mutable.
+
+    en JS let y const son palabras reservadas para declarar variables. 
+    Let nos va a permitir reasignar valores a la variable después de su declaración original.
+    Const no permite reasignacion de valores. (Son contantes, no variables)
+
+    Let y const también se diferencian en la manera que se inicializan, se puede definir una variable con let sind arle valor y 
+    darselo más adelante en el programa. Cosnt en cambio, necesita si o si una asignacion de valor para ser declarada.
+
+    Para definir variables, una buena práctica es definir que todas son constantes hasta que se demuestre lo contrario.
+
+    Tipos de variables: JS los infiere desde la variable.
+
+Datos primitivos en JS:
+    Son tipos de datos basicos y fundamentales en el lenguaje de programación que se utiliza para rempresentar 
+    valores simples. Son los más básicos y elementales en cualquier lenguaje de programación y se utilizan para cosntruir 
+    objetos y estructuras de datos mas complejas y para diseñar algoritmos.
+    String: Secuencia de caracteres, se definnen entre comillas 
+    Number: represneta un número (entero o decimal)
+        Definir numero:
+            const intNum = 5
+            const floatNum = 3.14
+            const negative = -3
+            Se pueden realizar operaciones aritméticas con sintáxis igual a las de las calculadoras.
+            Para el modulo se usa % (para el resto)
+            incremento variable ++ (se incrementa en 1) 
+            decremento variable -- (se reduce en 1)
+    
+    Boolean: Representan un valor de verdadero o falso.
+    Null: valor nulo, objeto que no existe o sin valor.
+    Undefined: variable sin valor asignado.
+
+
+    Prototipo: porpiedades que los hacen únicos y métodos que se pueden utilizar para realizar acciones sobre ellos.
+
+Metodo
+    es una función que pertenece a un objeto y se define dentro de la definición de clase o prototipo del objeto.
+    Tienen acceso a los datos del objeto y pueden modificarlos o utilizarlos para realizar operaciones. 
+
+  **BUSCAR DIFERENCIA ENTRE PROTOTIPO Y OBJETO Y POR QUE ES IMPORTANTE (ChatGPT)
+
+    Método toString: Convierte el número en una cadena de caracteres.
+        const numNro = "3.1415"
+        const num = toString(numNro)
+    Método parseFloat: COnvierte una cadena de caracteres a número decimal.
+        const numStr= "3.1415"
+        const num = parseFloat(numStr)
+    Método parseInt: Convierte una cadena de caracteres en un nro entero, redondea los float.    
+        const numStr = "3.1415"
+        const num = parseInt(numStr) (La salida es 3)
+
+Booleanos
+    Son un tipo de dato que pueden tener solo dos valores, gralmente se usan para obtener el resultado de una comparación objeto
+    condición. 
+    Se pueden declarar como cualquier otra variable en el código, aunque no es común que sea definido por el programador si no que
+    se obtenga como el resultado de una operacion. Se utulizan con los operadores de comparación.
+        ej:
+            let myBoolean = true
+
+Operadores de comparación:
+    Igual (==): comprueba si dos valores son iguales
+    No igual(!=): comprueba si dos valores son distintos
+    Igual estricto (===): comprueba si dos valores son iguales y del mismo tipo
+    No igual estricto(!==): comprueba si dos valores son distintos o de distinto tipo
+    Mayor que (>): comprueba si un valor es mayor que otro
+    Menor que (<): comprueba si un valor es menor que otro
+    Mayor o igual que (>=): comprueba si un valor es mayor o igual que otro
+    Menor o igual que (<=): comprueba si un valor es menor o igual que otro
+        ej: 
+            let a = 10;
+            let b = "10";
+ 
+            console.log(a==b) //False porque son de distinto tipo   
+
+Operadores lógicos
+    AND && : Devuelve verdadero si ambas condiciones son verdaderas
+    OR || : Devuelve verdadero si al menos una de las condiciones es verdadera
+    NOT ! : Invierte el resultado del booleano
+        ej:
+            let a = true;
+            let b = false; 
+        
+            console.log(a && b) //False
+            console.log(a || b) // True
+            console.log(a) // False
+        
+Estructuras de control
+    Es un bloque de código que permite manipular el flujo de ejecución del programa.
+    Son fundamentales en cualquier lenguaje de programación ya que permite realizar tareas como tomar desiciones, repetir
+    accioones y realizar cálculos basados en condiciones específicas.
+
+        if: Nos permite ejecutar bloques de control si una condicion es verdadera
+        elseif: Nos permite evaluar múltiples condiciones de manera secuencial
+        else: Si la condición anterior es falsa, se utiliza esta estructura para ejecutar otro bloque de código
+
+        if(condición1){
+            //Código a ejecutar si la condición es verdadera.
+        }elseif(condición2){ 
+            //Código a ejecucutar si la condición1 es falsa pero la condición2 es verdadera.
+        } else(condición3){
+            //Código a ejecutar si la condición1 y la condición2 son falsas pero la condicion3 es verdadera.
+        }
+
+Funciones   
+     Bloques de código que realizan siempre los mismos pasos.
+        
+
+
+
+
+
+
+
+
+
+
+
