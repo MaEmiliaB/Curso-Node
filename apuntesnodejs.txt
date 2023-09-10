@@ -1,4 +1,8 @@
-Variables: Son elementos fundamentales para almacenar y manipular datos en un programa.
+Qué es node?
+
+
+Variables
+    Son elementos fundamentales para almacenar y manipular datos en un programa.
     Es un contenedor que es un guardamemoria, un nombre, un tipo de dato y un valor que es un dato asignado.
     El nombre es una etiqueta que se usa par aidentificarla y hace referencia a ella en el código.
     El tipo de dato indica que tipo de información se almacena en esa variable.
@@ -54,8 +58,6 @@ Metodo
     es una función que pertenece a un objeto y se define dentro de la definición de clase o prototipo del objeto.
     Tienen acceso a los datos del objeto y pueden modificarlos o utilizarlos para realizar operaciones. 
 
-  **BUSCAR DIFERENCIA ENTRE PROTOTIPO Y OBJETO Y POR QUE ES IMPORTANTE (ChatGPT)
-
     Método toString: Convierte el número en una cadena de caracteres.
         const numNro = "3.1415"
         const num = toString(numNro)
@@ -65,6 +67,18 @@ Metodo
     Método parseInt: Convierte una cadena de caracteres en un nro entero, redondea los float.    
         const numStr = "3.1415"
         const num = parseInt(numStr) (La salida es 3)
+    Método legth: Devuelve la longitud de una cadena de texto
+        const texto = "Hola"
+        let longitud = texto.legth (La salida es 4)
+    Método charAr: Devuelve el caracter en una posición específica dentro de un string.
+        const texto = "Hola Mundo"
+        console.log(texto.charAr(0)) (La salida es H) 
+    Método toUpperCase: Devuelve el texto convertido en mayúscula.
+        const texto = "Hola Mundo"
+        console.log(texto.toUpperCase()) (La salida es HOLA MUNDO)
+    Metodo replace: Nos devuelve una cadena de texto dónde se reemplazan las ocurrencias de una subcadena.
+        const texto = "Hola Mundo"
+        console.log(texto.replace("Mundo", "Juan")) (La salida es Hola Juan)                   
 
 Booleanos
     Son un tipo de dato que pueden tener solo dos valores, gralmente se usan para obtener el resultado de una comparación objeto
@@ -74,7 +88,7 @@ Booleanos
         ej:
             let myBoolean = true
 
-Operadores de comparación:
+Operadores de comparación
     Igual (==): comprueba si dos valores son iguales
     No igual(!=): comprueba si dos valores son distintos
     Igual estricto (===): comprueba si dos valores son iguales y del mismo tipo
@@ -118,11 +132,138 @@ Estructuras de control
             //Código a ejecutar si la condición1 y la condición2 son falsas pero la condicion3 es verdadera.
         }
 
-Funciones   
-     Bloques de código que realizan siempre los mismos pasos.
-        
+Funciones y ámbitos 
+     Bloques de código reutilizables que realizan una tarea específica, permitiendo dividir el programa en pequeñas partes y manejables.
+     Cada función es delimitada por sus llaves y dentro de ellas podemos escribir cualquier código mientras sea válido, incluso otras
+     funciones.
+        Ej:     function saludo() {
+            console.log("Hola!");
+        }
+    Todo lo que se encuentra entre llaves será parte del scope de esa función. El scope o ámbito se refiere al contexto en el que 
+    las variables y las funciones están definidas y son accesibles en un programa, determina la visibilidad y la duración de las 
+    variables en el código.  
+    En JS hay 3 ámbitos el global, el local y el de bloque:
 
+    Ámbito global:
+        Es el contexto de nivel superior, las variables y funciones definidas en este son accesibles desde cualquier parte del programa,
+        incluso funciones anidadas. Es importante tener cuidado al usar variables globales ya que pueden causar conflictos y difucultar
+        encontrar bugs.
+    Ámbito local: 
+        Se genera cuando se declara una función. Las variables y funciones definidas en una función son accesiblesd entro de esa funcion
+        y no son visibles fuera de ella. Cada vez que se crea una función, se crea un nuevo ámbito local para esa funcón y s edestruye 
+        cuando la función finaliza su ejecución. Utilizarlas ayuda a evitar conflictos, facilita la organización del código y facilita 
+        ebcontrar errores.
+            ej: scope global -> let a = 5 (Se mantiene)
+                scope local o de función -> let a = 10 (esta es una nueva variable)
+                                            console log(a) // 10  
+                                            Si intento usar esta variable en el ámbito global, arroja 5   
+    Ámbito por bloque:
+        Es un contexto creado dentro de un bloque de código delimitado con llaves, como puede ser el cuerpo de una función, un bucle o 
+        una declaración if. Incluso si ese bloque está dentro de una función o de otro bloque, las variables declaradas en su interior
+        serán solo accesibles debtro de ese bloque.
+            ej: console.log(a) //10
+                let z = 23      
+                console.log(z) //23 
+                Si intento usar z en el ámbito global, dirá que no está definida.
 
+    Las variables declaradas con let y cons tienen ámbito de bloque, son accesibles dentro del bloque en el que se declaran.
+    Var no tiene esta limitación y es accesible en todo el código dónde se declaara, Eto nos puede llevar a sobreescribir información
+    de manera no intencional. Por eso var, no se considera una alternativa segura para definir variables.
+
+    Cómo puedo usar una función? Debo llamarl o invocarla escribiendo su nombre seguida de paréntesis.
+        ej: saludo() // Hola!
+
+    Parámetros: Son variables que se definen dentro de los paréntesis de la función y permiten que la función acepte datos externos. 
+        ej:     function suma(a,b){
+            console.log(a+b)
+        }  // a y b son parámetros de la función y pueden representar cualquier cosa, como una plantilla de posibles valores que la 
+            función puede recibir.
+
+            ejecución: suma(3,5) // el resultado será 8
+
+    Palabra return: Sirve para utilizar el resultado de una función en el resto de nuestro código. Con esta palabra podemos almacenar
+    el resultado en una variable y utilizarlo al llamar esa función.
+        ej: function suma(a,b){
+            return a+b 
+        }
+
+        cnst resultado = suma(3,5)
+        console.log(resultado)
+
+    Las funciones también se pueden declarar como una expresión, es decir, asignando una funcion a una variable directamente.
+    Ene ste caso, nuestra función es una función anónima, es decir que no tinee un nombre específico. Se definen utilizando la
+    palabra clave function seguida de parentesis y llaves pero sin especificar un nombre. Est o permite guardar nuestra función
+    dentro de una variable y pasarla como argumento a otra función. 
+        ej: const saludo = function() {
+            console.log("Hola!");
+        }     
+
+        para ejecutarla: saludo() // Mostrará Hola!
+
+    Arrow function o funciones flecha: Son la forma más concisa de definir funciones usando la sintáxis = o > en lugar de la palabra
+    clave function. Son funciones que no tienen prototipo, lo que significa que su comportamiento será diferente a las otras 
+    funciones en algunos casos.
+        ej: const suma = (a,b)=>{
+            return a+b;
+        }
+
+        console.log(suma(3, 5)) //El resultado será 8
+
+Estructura de datos
+    Es una forma organizada de almacenar y administrar datos en un programa.
+    Nos ayudan y facilitan el acceso y modificación de datos según las necesidades de nuestros algorítmos.
+
+Arrays
+    Listas ordenadas de elementos que pueden almacenar diferentes tipos de datos e incluso pueden tener otras esturucturas de datos.
+    Los arrays, al igual que otras variables, se declaran y se inicializan, se hace con let más el nombre del arreglo igual y entre
+    corchetes se declaran los elementos. El primer elemento se encuentra en la posición cero.
+    ej:     let frutas=["manzana", "banana", "pera"];
+            console.log(frutas) //se imprime la lista completa
+            console.log(frutas[0]) //se imprime el elemento 0, en este caso manzana
+
+            frutas[3] = "ciruela"
+            console.log(frutas) //imprime la lista, pero modifica pera por ciruela
+    Los arrays tienen sus propios prototipos, es decir es una plantilla con propiedades y métodos que son comunes a cualquier elemento
+    de ese tipo. 
+        Método length: 
+            console.log(frutas.length)//Nos da la longitud de los elementos del array, 3.  
+        Método push:
+            frutas.push["Naranja"]//Agrega al funal del array un elemento
+        Método pop:
+            frutas.pop()//Remueve el último elemento del arreglo
+        Método shift:
+            frutas.shifr("Naranja")//Agrega un elemento al principio del array
+        Método unshift:
+            frutas.unshift() //Elimina el elemento cero
+        Método forEach:
+            frutas.forEach(fruta=> console.log(fruta));//Permite recorrer uno por uno los elementos del arreglo                        
+        Método map:
+            const mensaje= frutas.map(fruta=>{
+                return "Me gusta comer " + fruta
+            })
+            console.log(mesaje)// retorna un nuevo array con elementos que dice "ME gusta comer + nombre de la fruta"
+        Método splice:
+            frutas.plice(2,0, "Limon", "Kiwi"); 
+            console.log(frutas)    //Agrega limon y kiwi en la posición 2 que es lo que le indicamos en la posición cero, pero 
+                                    no remueve ningún elemento porque el segundo está en cero. 
+            frutas.splice(2,1, "Limon", "Kiwi"); 
+            console.log(frutas)//Agrega limon y kiwi que es lo que le indicamos en la posición cero, remueve el original
+                                de la posición 2.
+
+        -> Los arrays se pasan por referencia y no por valor, significa que cuando pasas un array a una función o asignas un
+        array como valor de otro, estamos pasando una referencia al objeto array en la memoria en lugar de una copia del mismo;
+        por lo que si una funciónc ambia el valor de un elemento del array dentro de su alcance, el cambio se va a reflejar en
+        todas las referencias del mismo array.
+            ej: let array1 = [1,2,3];
+                let array2 = array1;    //cualquier cambio en array1 va a afectar a array2
+
+                array2[0]=4;
+                console.log(array1)
+
+        Cuando se quiera evitar esta situación, para crear una copia de un array en lugar de una referencia a la misma memoria,
+        se puede usar el método slice o el operador spread, que son tres puntos (spread operator).
+            ej:  let array1 = [1,2,3];
+                let array2= array1.slice(); //array2 se crea como una copia del contenido de array1
 
 
 
