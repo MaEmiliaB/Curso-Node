@@ -343,7 +343,58 @@ Bucles
         const numeros =[1,2,3,4,5,6,7,8,9];
         clasificaNumeros(numeros)
 
+Objetos
+    Qué son?: Son como contenedores que guardan datos y funciones relacionadas en el formato clave-valor.
+    A los datos se les llama propiedades y a las funciones métodos.
+        ej: const miGato = {
+            nombre: "Mia",
+            edad:2, //Clave: edad, Valor: 3
+            color: "Blanco"
+            maullar: function(){
+                console.log("Miau!")
+            }
+            }
 
+    Se puede sacceder a las propuedades de un objeto, utilizando el nombre del objeto segiuodo por un punto y el nombre de la propiedad.
+        ej: console.log("El nombre de mi gato es: " + miGato.nombre)
+            console.log( y tiene" + miGato.edad + " años.")
+    También se pueden modificar las propiedades cómo si fueran variables.
+        ej: miGato.edad=10
 
+    Los métodos de los objetos son simples funciones que están asociadas al objeto por contexto, si queremos llamar al método de un
+    objeto, utlizamos el nombre del objeto seguido por un punto y el nombre del método que queremos utilizar seguido por paréntesis
+    como si llamaramos a una funcion normal.
+        ej: miGato.maullar()
 
+    La estructura de los objetos es igual a la de los prototipos, dónde cada tipo tiene sus propiedades y métodos que podemos acceder.
+    Los objetos nos permiten estructurar datos y generaar nuestros propios templates para guardar info de forma ordenada e incluso para
+    realizar operaciones con estos datos. Nos permiten generar nuestros propios prototipos.
 
+    Prototipos y herencia.
+        Cómo funcionan los prototipos de objetos?: Cada objeto tiene un prototipo que es otro objeto. Todas las propiedades y métodos
+        del prototipo están disponibles para el objeto original.
+
+        ej: miNuevoGato = Object.create(miGato) //nuevo objeto llamado miNuevoGato que hereda de miGato, significa que tiene acceso a
+                                                todas las propiedades y métodos de miGato.
+            miNuevoGato.maullar()                                    
+
+        Al imprimir miNuevoGato aparece como un objeto vacío, aunque tiene acceso a todas las propuedades de su prototipo original,
+        pero no son parte de su declaración.
+        La herencia de prototipos nos permite compartir funcionalidades de nuestro código sin tener necesidad de volver a escribirlo.
+
+    Métodos de objet.
+        Objet.keys: devuelve un array que contiene las claves de nuestro objeto. 
+
+            ej: let keys = Objet.keys(miGato)
+                console.log(keys)
+        Nos puede servir para iterar el obejeto utilizando un bucle for.        
+            ej: for (let i=0; i <keys.length; i++){
+                console.log(`La clave es " ${keys[i]} " y el valor es "${miGato[keys[i]]}"`) 
+            }
+        hasOwnPeoperty: Permite verificar si un objeto tiene una propiedad específica como su propiedad propia, no heredada.
+            ej: console.log(miGato.hasOwnProperty('nombre'))
+                console.log(miGato.hasOwnProperty('maullar'))
+                console.log(miNuevoGato.hasOwnProperty('maullar'))
+
+        Object.getOwnPropertyNames: devuelve un array con todas las propiedades propias del objeto, incluso las que no son enumerables.
+            ej: console.log(Object.getOwnPropertyNames(miGato))

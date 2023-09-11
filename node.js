@@ -67,19 +67,52 @@
 
 //Ejemplo de aplicación de bucles
 
-function clasificaNumeros(numeros) {
-    const pares = [];
-    const impares = [];
-    for (const numero of numeros) {
-        if (numero % 2 === 0) {
-            pares.push(numero);
-        } else {
-            impares.push(numero);
-        }
-    }
-    console.log("Numeros pares: ", pares);
-    console.log("Numeros impares: ", impares);
-}
+// function clasificaNumeros(numeros) {
+//     const pares = [];
+//     const impares = [];
+//     for (const numero of numeros) {
+//         if (numero % 2 === 0) {
+//             pares.push(numero);
+//         } else {
+//             impares.push(numero);
+//         }
+//     }
+//     console.log("Numeros pares: ", pares);
+//     console.log("Numeros impares: ", impares);
+// }
 
-const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-clasificaNumeros(numeros)
+// const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// clasificaNumeros(numeros)
+
+const miGato = {
+    nombre: "Mia",
+    edad: 2, //Clave: edad, Valor: 3
+    color: "Blanco",
+    maullar: function () {
+        console.log("Miau!")
+    }
+}
+miGato.edad = 10 //Cambio el valor de la propiedad como si fuera una variable
+console.log("El nombre de mi gato es: " + miGato.nombre)
+console.log("y tiene " + miGato.edad + " años.")
+
+miGato.maullar()
+
+
+let miNuevoGato = Object.create(miGato)
+miNuevoGato.maullar()
+
+console.log(miNuevoGato)
+
+// let keys = Object.keys(miGato)
+//console.log(keys)
+
+// for (let i = 0; i < keys.length; i++) {
+//     console.log(`La clave es "${keys[i]}" y el valor es "${miGato[keys[i]]}"`)
+// }
+
+console.log(miGato.hasOwnProperty('nombre'))
+console.log(miGato.hasOwnProperty('maullar'))
+console.log(miNuevoGato.hasOwnProperty('maullar'))
+
+console.log(Object.getOwnPropertyNames(miGato))
