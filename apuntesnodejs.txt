@@ -1,6 +1,14 @@
 Qué es node?
-
-
+    Node.js es un entorno de tiempo de ejecución de JavaScript que permite ejecutar código JavaScript en el servidor.
+    A diferencia de JavaScript en el navegador, que se ejecuta en el cliente, Node.js permite ejecutar JavaScript en el servidor,
+    lo que lo hace ideal para desarrollar aplicaciones de lado del servidor. 
+        (Chat GPT)
+Comandos útiles en VSCode
+    ctl + k seguido de ctl + C -> Transoforma a comentario el código seleccionado
+    ctl + k seguido de ctl + U -> Descomenta el código
+    // comentario en una línea
+    /* abrir comentario de varias líneas
+    */ cerrar comentario en varias líneas
 Variables
     Son elementos fundamentales para almacenar y manipular datos en un programa.
     Es un contenedor que es un guardamemoria, un nombre, un tipo de dato y un valor que es un dato asignado.
@@ -172,22 +180,22 @@ Funciones y ámbitos
 
     Cómo puedo usar una función? Debo llamarl o invocarla escribiendo su nombre seguida de paréntesis.
         ej: saludo() // Hola!
-
-    Parámetros: Son variables que se definen dentro de los paréntesis de la función y permiten que la función acepte datos externos. 
+        
+        Parámetros:Son variables que se definen dentro de los paréntesis de la función y permiten que la función acepte datos externos. 
         ej:     function suma(a,b){
             console.log(a+b)
         }  // a y b son parámetros de la función y pueden representar cualquier cosa, como una plantilla de posibles valores que la 
             función puede recibir.
 
             ejecución: suma(3,5) // el resultado será 8
-
+                
     Palabra return: Sirve para utilizar el resultado de una función en el resto de nuestro código. Con esta palabra podemos almacenar
     el resultado en una variable y utilizarlo al llamar esa función.
         ej: function suma(a,b){
             return a+b 
         }
 
-        cnst resultado = suma(3,5)
+        const resultado = suma(3,5)
         console.log(resultado)
 
     Las funciones también se pueden declarar como una expresión, es decir, asignando una funcion a una variable directamente.
@@ -209,46 +217,46 @@ Funciones y ámbitos
 
         console.log(suma(3, 5)) //El resultado será 8
 
-Estructura de datos
+Estructuras de datos
     Es una forma organizada de almacenar y administrar datos en un programa.
     Nos ayudan y facilitan el acceso y modificación de datos según las necesidades de nuestros algorítmos.
 
-Arrays
-    Listas ordenadas de elementos que pueden almacenar diferentes tipos de datos e incluso pueden tener otras esturucturas de datos.
-    Los arrays, al igual que otras variables, se declaran y se inicializan, se hace con let más el nombre del arreglo igual y entre
-    corchetes se declaran los elementos. El primer elemento se encuentra en la posición cero.
-    ej:     let frutas=["manzana", "banana", "pera"];
-            console.log(frutas) //se imprime la lista completa
-            console.log(frutas[0]) //se imprime el elemento 0, en este caso manzana
+    Arrays
+        Listas ordenadas de elementos que pueden almacenar diferentes tipos de datos e incluso pueden tener otras esturucturas de datos.
+        Los arrays, al igual que otras variables, se declaran y se inicializan, se hace con let más el nombre del arreglo igual y entre
+        corchetes se declaran los elementos. El primer elemento se encuentra en la posición cero.
+        ej:     let frutas=["manzana", "banana", "pera"];
+                console.log(frutas) //se imprime la lista completa
+                console.log(frutas[0]) //se imprime el elemento 0, en este caso manzana
 
-            frutas[3] = "ciruela"
-            console.log(frutas) //imprime la lista, pero modifica pera por ciruela
-    Los arrays tienen sus propios prototipos, es decir es una plantilla con propiedades y métodos que son comunes a cualquier elemento
-    de ese tipo. 
-        Método length: 
-            console.log(frutas.length)//Nos da la longitud de los elementos del array, 3.  
-        Método push:
-            frutas.push["Naranja"]//Agrega al funal del array un elemento
-        Método pop:
-            frutas.pop()//Remueve el último elemento del arreglo
-        Método shift:
-            frutas.shifr("Naranja")//Agrega un elemento al principio del array
-        Método unshift:
-            frutas.unshift() //Elimina el elemento cero
-        Método forEach:
-            frutas.forEach(fruta=> console.log(fruta));//Permite recorrer uno por uno los elementos del arreglo                        
-        Método map:
-            const mensaje= frutas.map(fruta=>{
-                return "Me gusta comer " + fruta
-            })
-            console.log(mesaje)// retorna un nuevo array con elementos que dice "ME gusta comer + nombre de la fruta"
-        Método splice:
-            frutas.plice(2,0, "Limon", "Kiwi"); 
-            console.log(frutas)    //Agrega limon y kiwi en la posición 2 que es lo que le indicamos en la posición cero, pero 
-                                    no remueve ningún elemento porque el segundo está en cero. 
-            frutas.splice(2,1, "Limon", "Kiwi"); 
-            console.log(frutas)//Agrega limon y kiwi que es lo que le indicamos en la posición cero, remueve el original
-                                de la posición 2.
+                frutas[3] = "ciruela"
+                console.log(frutas) //imprime la lista, pero modifica pera por ciruela
+        Los arrays tienen sus propios prototipos, es decir es una plantilla con propiedades y métodos que son comunes a cualquier elemento
+        de ese tipo. 
+            Método length: 
+                console.log(frutas.length)//Nos da la longitud de los elementos del array, 3.  
+            Método push:
+                frutas.push["Naranja"]//Agrega al funal del array un elemento
+            Método pop:
+                frutas.pop()//Remueve el último elemento del arreglo
+            Método shift:
+                frutas.shifr("Naranja")//Agrega un elemento al principio del array
+            Método unshift:
+                frutas.unshift() //Elimina el elemento cero
+            Método forEach:
+                frutas.forEach(fruta=> console.log(fruta));//Permite recorrer uno por uno los elementos del arreglo                        
+            Método map:
+                const mensaje= frutas.map(fruta=>{
+                    return "Me gusta comer " + fruta
+                })
+                console.log(mesaje)// retorna un nuevo array con elementos que dice "ME gusta comer + nombre de la fruta"
+            Método splice:
+                frutas.plice(2,0, "Limon", "Kiwi"); 
+                console.log(frutas)    //Agrega limon y kiwi en la posición 2 que es lo que le indicamos en la posición cero, pero 
+                                        no remueve ningún elemento porque el segundo está en cero. 
+                frutas.splice(2,1, "Limon", "Kiwi"); 
+                console.log(frutas)//Agrega limon y kiwi que es lo que le indicamos en la posición cero, remueve el original
+                                    de la posición 2.
 
         -> Los arrays se pasan por referencia y no por valor, significa que cuando pasas un array a una función o asignas un
         array como valor de otro, estamos pasando una referencia al objeto array en la memoria en lugar de una copia del mismo;
@@ -265,9 +273,75 @@ Arrays
             ej:  let array1 = [1,2,3];
                 let array2= array1.slice(); //array2 se crea como una copia del contenido de array1
 
+Bucles
+    For: es uno de los más comunes en todos los lenguajes. En este bucle tenemos control en el iterador y en la sentencia final.
+        Se usa en casos dónde sabemos hasta dónde tenemos que iterar.
+        Sintáxis:
+            for(inicialización de un iterador,; condición a cumplir; incremento del iterador){
+                código a ejecutar
+            }
+        Ciclo:
+            - Se inicializa el contador
+            - Se verifica la condición
+            - Se ejecuta el código
+            - Se realiza una acción sobre el contador
 
+        Ej: queremos contar los numeros del 1 al 5.
+            for (let i = 1; i <=5;i++){
+                console.log(i)
+            }    
 
+    While: Ejecuta un bloque de código siempre que se cumpla una condición. Se utiliza en situaciones dónde no se tiene control en la variable final.
+        Sintáxis: 
+            while(condicion){
+                //Cuerpo de la función 
+            }
+        Ej:     let i=2 //Fuera del while
+                while(i<=5){
+                    console.log(i)
+                    i++//esto modifica una variable
+                }    
+    Do Wile: La condición se evalúa despúes de la primera ejecución del código.
+        Sintáxis:
+        do {
+            //código a ejecutar
+        } while(condicion)
+        Ej: let i =1 //Fuera del bloque
+            do {
+                console.log(i)
+                i++
+            } while(i<=5)
+    forEach:
+        Es específico para trabajar con arrays, nos permite ejecutar una función para cada elemento de un array.
+        Sintáxis: 
+            Ej: const numeros= [1,2,3,4,5]
+            numeros.forEach(numero=>{
+                consol.elog(numero)
+            })        
+    For Of:
+        Permite iterar sobre elementos de estructuras iterables como arrays o strings.
+        ej:
+            const texto= "NodeJS"
+            for(letra of texto){
+                console.log(letra)
+            } // Devuelve un console.log de cada lertra del string
 
+    ej de aplicación
+        function clasificaNumeros(numeros){
+            const pares= [];
+            const impares= [];
+                for (const numero of numeros){
+                    if (numero % 2 ===0){
+                        pares.push(numero);
+                    }else{
+                        impares.push(numero);}
+                    }
+                console.log("Numeros pares: " , pares);
+                console.log("Numeros impares: ", impares);
+        }
+
+        const numeros =[1,2,3,4,5,6,7,8,9];
+        clasificaNumeros(numeros)
 
 
 
