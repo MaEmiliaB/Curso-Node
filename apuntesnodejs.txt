@@ -3,12 +3,16 @@ Qué es node?
     A diferencia de JavaScript en el navegador, que se ejecuta en el cliente, Node.js permite ejecutar JavaScript en el servidor,
     lo que lo hace ideal para desarrollar aplicaciones de lado del servidor. 
         (Chat GPT)
+
 Comandos útiles en VSCode
     ctl + k seguido de ctl + C -> Transoforma a comentario el código seleccionado
     ctl + k seguido de ctl + U -> Descomenta el código
     // comentario en una línea
     /* abrir comentario de varias líneas
     */ cerrar comentario en varias líneas
+
+    Para ejecutar en la terminal, es necesario escribir "node nombre_del_archivo.js" para correr el código.
+
 Variables
     Son elementos fundamentales para almacenar y manipular datos en un programa.
     Es un contenedor que es un guardamemoria, un nombre, un tipo de dato y un valor que es un dato asignado.
@@ -398,3 +402,59 @@ Objetos
 
         Object.getOwnPropertyNames: devuelve un array con todas las propiedades propias del objeto, incluso las que no son enumerables.
             ej: console.log(Object.getOwnPropertyNames(miGato))
+
+Creando nuestros módulos
+    Cada archivo independiente es un módulo y cada archivo se puede llamar desde otro archivo para utilizar el código que tiene
+    escrito adentro. Creamos dos archivos js, app.js y greet.js.
+    ej: módulo que exporta una función para saludar a un usuario.
+        Para lograrlo vamos a crear un módulo greet y lo vamos a utiñizar dentro del archivo app.js.
+        Para poder usar un módulo es necesario indicarle a node.js explícitamente que se quiere compartir, por eso vamos a definir
+        nuestra función y exportarla dentro del objeto de node module en su propiedad exports module (que es un objeto que se encuentra
+        disponible en el runtime de node y nos permite exponer todo lo que queremos exportar con el resto de nuestro código).
+        En archivo greet.js:
+
+                function greet(name) {
+                    return `¡Hola ${name}!`
+                };
+
+                module.exports = { greet }
+
+        Para usar este modulo en nuestro archivho app tenemos que indicar que lo necesitamos, para eso vamos a requerir nuestro archivo,
+        declarando una variable que puede tener cualquier nombre y le asignamos un valor utilizando la palabra reservada require y entre
+        paréntesis la ruta del módulo que queremos usar. Luego para ejecutar hacemos un console.log.
+            En archivo app.js:
+                const greet = require('./greet')
+                console.log(greet.greet("mundo"))
+
+        Un módulo puede tener más de un export. Podemos crear un nuevo greet que diga "Bye!" por ejemplo.   
+                function bye(name) {
+                    return `¡Bye ${name}!`
+                }
+                module.exports = { greet, bye }         
+    
+    Código modular: Significa que cada parte de nuestro código tiwnw su propia responsabilidad separada, lo que hace que el códugo esté
+    más organizado, sea más manejable y mucho más fácil de entender.
+
+Módulos nativos:
+    Son herramientas que vienen integradas para no repetir código, permiten realizar diferentes operaciones.
+    Por ejemplo:
+        Módulo fs: Puede servir para operaciones con sistema de archivos.
+        Módulo http: Sirve para crear servidores http.
+
+NPM - Node Package Manager:
+    Es dónde podemos encontrar código de terceros para utilizar. Viene instalado con el seetup inicial node.js.
+    El código puede contenerse en módulos, librerías o framework.
+    NPM tiene una página (npmjs.com) con un buscador para explorar módulos y tiene info útil sobre quién desarrollo el código,
+    que problema resuelve y cómo utilizarlo.
+
+    Usando NPM:
+    - Inicializamos proyecto con un paquete NPM. (En app.js) abriendo la terminal tipeando npm init, para saltar los pasos, dar enter.
+    - Se crea una rchivo nuevo {}packaje.json que contiene toda la info de nuestro proyecto y se puede modificar de ser necesario.
+    - En la terminal tipear npm install cat-me(que es la instrucción que nos dio la pág npm para instalar el paquete que queremos usar).
+    - Se crea una nueva propuedad en package.json que se llama dependencies, ahí estan indicatos todos los modulos que instalemos a partir
+    de ahora. También va a haber una carpeta que se llama Node modulos, dónde se van a guardar todas las dependencias para que nuestros
+    módulos puedan funcionar correctamente.
+    - Escribimos el código dónde requerimos el módulo:
+        consta catMe= require ('cat-me')
+        console.log(catMe())
+
