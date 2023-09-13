@@ -2,7 +2,7 @@
 
 Es el resultado de ver el curso de @iamdoomling en youtube.
 
--> https://www.youtube.com/playlist?list=PLoIQktQDGsr8qFskV3lWcg0cabOmfgRce
+[Pincha para ir al curso]-> (https://www.youtube.com/playlist?list=PLoIQktQDGsr8qFskV3lWcg0cabOmfgRce)
 
 No tiene desperdicio! Son 11 clases y sumando! 
 

@@ -1,0 +1,163 @@
+La app.
+    Realizar una app que permita crear, editar o borrar notas de un archivo.
+
+Que hará?
+   -Abrirá una terminal dónde el usuario pueda ingresar texto
+   -Dará indicaciónes de qué hacer, en que momento ingresar el texto y cómo realizar las diferentes acciones que podemos hacer
+   con ella.
+   -Según lo que el usuario elija hacer de las opciones que se presentan, vamos a tener que hacer que el código realice la acción
+   educada sobre las notas que le estamos presentando.
+   -Debe hacer que tome la infomación que da el usuario modifique un archivo en nuestro SO de forma acorde.
+
+Pasos:
+    abrir terminal
+    mkdir notes-cli (para crear una carpeta)
+    cd notes-cli (para abrir la carpeta)
+    npm init -y (genera un nuevo proyecto de node, la "-y" es para oviar todas la spreguntas del setup inicial)
+    npm install readline fs
+    crear archivo js (main.js), dónde se van a requerir módulos externos
+
+    Tipear:
+        const readline = require("readline"); //Leer y devolver información desde la línea de comandos de la terminal
+        const fs = require("fs");// Permite meternos con el sistema de archivos de nuestro SO
+
+        Creamos una función main que será la que se mantenga mientras el programa esté corriendo en memoria.
+        Antes de poder tomar datos de la terminal, tenemos que indicarle algunas cosas al programa. 
+        Utilizamos el módulo interno readline para crear una instancia en la que le vamos a indicar a la consola de dónde tomar
+        datos del usuario y dónde mostrar la info que devolvemos.  
+
+        Declaramos una constante rl a la que le vamos a asignar como valor readline, que es uno de los módulos importados; y llamamos
+        a nuestro método createInterface al que le vamos a pasar ciertas opciones.
+        createInterface es un método de readline que recibe un objeto, este objeto lo que hace es decirle a readline de dónde tiene
+        que tomar la información; en este caso se usa process.stdin
+
+        
+        const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        }) 
+
+        process es es un objeto global que se crea cuando ndoe se ejecuta y tiene toda la información pertinente a node y su 
+        ejecución. Y una de las cosas que permite es leer y mostrar en pantalla información que podemos obtener desde la consola.
+        A process se puede acceder con un console.log(process)
+        Vamos a acceder a stdin y stdout. Cuando creamos nuestra instancia de redline vamos a pedirle que la info la lea desde 
+        process.stdin (input de la consola donde corre node) y para indicarle que muestre info lo haga con process.stdout (output o
+        salida de la consola actual)
+
+        Una vez que esta configurada la consola con entrada y salida, vamos a probarla; para eso se usa una estructura de control
+        llamada switch que tiene usos muy específicos. Por ejemplo cuando hay diferentes casos de código que queremos que se ejecuten
+        dependiendo del valor de entrada del usuario.
+        El módulo readline tiene sus própios métodos, usarmeos el método questions de la instancia de readline.
+        Lo que hace questions es imprimir un texto utilizando el  output  que le indicamos a la instancia, que en este caso es la 
+        salida de la consola y devolvernos una respuesta con la que podemos hacer algo, es decir procesarla en nuestro switch.
+
+        Comenzamos preguntandole al usuario qeu desea hacer, si agregar una nota o salir de la consola.
+
+        function main(){
+            rl.question(
+                "Qué queres hacer? 1. Ver un mensaje, 2. Salir",
+                (answer) => {
+                    switch (answer) {
+                        case"1":
+                            console.log("Acá vamos a agregar un mensaje")
+                            main(); // A la función que se llama dentro de su propia función se la llama recursividad, la invocamos
+                                        porque una vez que procesamos la info del usuario y ehecutamos nuestro código quremos volver a
+                                        presentarle las opciones iniciales y no que el programa se cierre.
+                            break; //Insica al switch que ya terminó de ejecutar un caso y puede cerrar su ejecución, es importante para evitar
+                                    loops infinitos.
+                        case "2":
+                            rl.close();
+                            break;                //Cerrar el proceso      
+                        default:                //Funcion por defecto para indicar que las opciones no son validas
+                            console.log("Invalid option");
+                            main();
+                            break;
+                    }        
+                }   
+            );           
+        }    
+        main(); //Llamamos nuevamente la funcion
+
+        Ahora agregaremos complejidad y hacemos que en la opción 1 nos permita guardar un mensaje en un archivo.
+        Necesitamos crear una constatnte que contenga el archivo que queremos salvar (antes de la funcion).
+        Creamos una constante que adentro solo tiene un string con el nombre del archivo.
+
+            const NOTAS_FILE = "NOTAS_FILE.json"; //Las mayusculas se usan como convencion para las constantes globales en JS 
+
+        Antes de guardar un archivo necesitamos salvar lo que ingrese el usuario en memoria, para eso declaramos un array vacío llamado
+        notas e incializarlo vacío.
+            const notas=[];    
+
+       Ahora necesitamos tomar ese input y salvarlo
+
+       Creamos una funciòn que se llame add note que reciba como parámetro el string que ingresa el usuario.
+            function addNota(nota){
+                notas.push(nota)//Es lo que estamos tomando del usuario
+                fs.writeFolesSync(NOTAS_FILE, JSON.stringify(notas)); //Utilizamos el método writeFolesSync de nuestro método fs
+            }     
+    fs: modulo nativo de node que permite manejar archivos 
+    writeFolesSync: es el método que recibe un nombre de archivo como primer parámetro y como segundo parámetro el contenido que 
+    queremos guardar, el contenido tiene que estar en un formato específico que está definido en las especificaciones del método. 
+    Si pasamos notes como un array sin hacerle nada, la consola nos va a devolver un error. Por eso vamos a utilizar jason.stringify
+    que es un método en JS que convierte un objeto o un valor en un string en formato json. 
+
+    Tenemos que hacerle una nueva pregunta al ususario con rl.question dentro del contexto de la pregunta anterior (anidados), 
+    por lo que el código final queda así: 
+
+    const readline = require("readline");
+const fs = require("fs");
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+})
+
+const NOTAS_FILE = "NOTAS_FILE.json";
+const notas = [];
+
+function addNota(nota) {
+    notas.push(nota)
+    fs.writeFileSync(NOTAS_FILE, JSON.stringify(notas));
+}
+
+function main() {
+    rl.question(
+        "Qué queres hacer? 1. Agregar una nota, 2. Salir: ",
+        (answer) => {
+            switch (answer) {
+                case "1":
+                    rl.question("Ingresá el texto de tu nota: ",
+                        (userAnswer) => {
+                            addNota(userAnswer);
+                            main();
+                        })
+                    break;
+                case "2":
+                    rl.close();
+                    break;
+                default:
+                    console.log("Invalid option");
+                    main();
+                    break;
+            }
+        }
+    );
+}
+
+main();
+
+
+Al final se crea un archivo NOTAS_FILE.json que contiene el mensaje que queremos guardar.
+
+:)
+
+
+Para completarlo aún más:
+    La idea es completarlo con dos funciones más, una que enliste las notas y otra que permita eliminarlas.
+
+
+        
+
+
+
+            
