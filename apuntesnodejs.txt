@@ -240,7 +240,7 @@ Estructuras de datos
             Método length: 
                 console.log(frutas.length)//Nos da la longitud de los elementos del array, 3.  
             Método push:
-                frutas.push["Naranja"]//Agrega al funal del array un elemento
+                frutas.push["Naranja"]//Agrega al final del array un elemento
             Método pop:
                 frutas.pop()//Remueve el último elemento del arreglo
             Método shift:
