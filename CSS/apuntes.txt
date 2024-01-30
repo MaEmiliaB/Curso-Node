@@ -1,0 +1,100 @@
+CSS (Cascading Style Sheets - Hojas de Estilo en Cascada)
+    Lenguaje de diseño para definir y crear la rpesentación de un documento escrito en lenguaje de marcado.
+
+Existen 3 maneras para hacer css en un archivo HTML.
+    - Importando un archivo CSS (recomendada)
+        Dentro de la etiqueta de head:
+        ej: <head>
+            <link rel="styleshet" href="style.css" />
+            </head>
+        
+        Dónde rel es la relación que tiene el link y href es la ubicación del archivo.
+        El archivo CSS puede tener cualquier nombre, para que se aplique tiene que tener bien la ruta.
+
+        Una vez creado el archivo CSS podemos comenzar a escribir código en éll:
+
+        body{
+                color:tomato;
+            }
+
+
+    - Escribiendo CSS en el archivo HTML 
+        Dentro de la etiquta head, escribir una etiqueta style.  
+        ej: <head>
+            <style>
+            body{
+                color:tomato;
+            }
+            </style>
+            </head>
+
+    - Escribiendo CSS dentro de las mismas etiquetas HTML:
+        ej: <body style="color:tomato">
+
+Selectores
+    Los selectores en CSS son patrones que se utilizan para seleccionar los elementos HTML a los que se les
+    aplicarán estilos. 
+
+    EJ:   <h1 id="titulo">Título </h1>
+            <p class="texto"> Texto párrafo </p>
+            <p class="texto especial"> Texto párrafo </p>
+            <p class="especial"> Texto párrafo </p>
+
+        Dónde h1 es un selector de título con una asignación id para luego definir un estilo personalizado 
+        exclusivamente para ésta etiqueta. De la misma manera, se modifica la etiqueta p de párrafo con un selector de clases 
+        (class).
+
+        #titulo {
+            color: tomato; 
+        }
+        p.texto {
+            color: slateblue;
+            }
+
+        En CSS utilizamos el # para aplicar el estilo según la etiqueta que sigue, en éste caso; el título.
+        Aplicamos . antes de la etiqueta de clase que queremos destacar. 
+        Para aplicar el estilo de selección de clase se coloca la clase, el punto y la etiqueta; por lo que el orden 
+        deprioridad es lo último que se haya escrito. 
+
+         div p {      /esto quiere decir que en todas las etiquetas de div que contengan la letra p, se aplique el formato
+         } 
+
+        *{              
+            font-size: 24px;
+        }               /* El * es un selector universal que hará que todo el documento tenga el mismo formato siempre y cuándo
+                            no hayan sido aplicadas por otros selectores*/
+
+Comentarios:
+    /*este es un comentario*/ 
+
+Propiedad color:
+
+    Para acceder a los colores disponibles presionar ctrl + espacio.
+    También se puede acceder utilizando la convención de rgb, utilizando hexadecimal y utilizando valores hls. 
+    
+    Para acceder por el modelo de color se accede comenzando el color con # seguido por 6 caracteres, siendo 0 la ausencia total del color y
+    f la mayor expresión del color.
+        Se peude acceder usando 3 o 6 caracteres: 
+            #000 -> negro
+            #f00 -> rojo intenso
+            #0f0 -> verde intenso
+            #00f -> azul intenso 
+            #ff0 -> amarillo
+
+        Para acceder con 6 dígitos:
+            #000000 -> Esto es negro, para acceder a otros colores, los primeros dos dígitos corresponden al rojo, los segundos dos al verde
+            y el útimo par al azul. 
+
+            color: #ff0000 -> La máxima expresión del rojo.
+
+    Para acceder al modelo de color con RGB:
+            color: rgb(0,0,0);
+        funciona muy parecido al hexadecimal pero con números del cero al 255. Sindo el primer valor el rojo, el segundo el verde 
+        y el tercero el azul.
+
+
+        
+
+
+
+
